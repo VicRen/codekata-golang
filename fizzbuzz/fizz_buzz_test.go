@@ -38,6 +38,11 @@ func TestFizzBuzz(t *testing.T) {
 			15,
 			"FizzBuzz",
 		},
+		{
+			"case 45",
+			45,
+			"FizzBuzz",
+		},
 	}
 
 	for _, tc := range tt {
