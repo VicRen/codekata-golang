@@ -3,14 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	for i := 1; i <= 100; i++ {
+	sum := 0
+	for i := 1; i < 1000; i++ {
 		fb := FizzBuzz(i)
 		if fb == "" {
 			fmt.Println(i)
 			continue
+		} else {
+			sum += i
 		}
 		fmt.Println(fb)
 	}
+	fmt.Println("sum=", sum)
 }
 
 func FizzBuzz(n int) string {
