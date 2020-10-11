@@ -38,9 +38,8 @@ func Tau(num int) int {
 	return p
 }
 
-func GetTriangularNumber(count int) int {
-	ret := count * (count + 1) / 2
-	return ret
+func GetTriangularNumber(n int) int {
+	return n * (n + 1) / 2
 }
 
 func ListDivisors(input int) []int {
