@@ -7,11 +7,15 @@ import (
 )
 
 func main() {
+	findMaxPalindrome(100, 999)
+}
+
+func findMaxPalindrome(start, end int) int {
 	var n int
 	var x int
 	var y int
-	for i := 100; i < 1000; i++ {
-		for j := 100; j < 1000; j++ {
+	for i := start; i < end+1; i++ {
+		for j := start; j < end+1; j++ {
 			tmp := i * j
 			if tmp > n && IsPalindrome(tmp) {
 				x = i
@@ -21,6 +25,7 @@ func main() {
 		}
 	}
 	fmt.Println(x, y, n)
+	return n
 }
 
 func IsPalindrome(n int) bool {
