@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 var src = "73167176531330624919225119674426574742355349194934" +
@@ -36,8 +37,10 @@ func main() {
 		nextSrc = append(nextSrc, i)
 		src = src[1:]
 	}
+	t := time.Now()
 	var next []int
 	var out int
+	var outS []int
 	for {
 		next, nextSrc = FetchNextAdjacent(13, nextSrc)
 		if len(next) == 0 {
@@ -50,10 +53,12 @@ func main() {
 		}
 		if product > out {
 			out = product
+			outS = next
 		}
 	}
 
-	fmt.Println("the largest product is", out)
+	fmt.Println("time:", time.Since(t))
+	fmt.Println("the largest product is", out, outS)
 }
 
 func FetchNextAdjacent(n int, src []int) ([]int, []int) {
