@@ -1,67 +1,44 @@
 package main
 
 import (
-	"errors"
-	"reflect"
 	"testing"
 )
 
 func Test_findPermutation(t *testing.T) {
 	type args struct {
 		n int
-		m int
 	}
 	tt := []struct {
-		name    string
-		args    args
-		want    int
-		wantErr error
+		name string
+		args args
+		want int
 	}{
 		{
-			"1-2",
-			args{1, 2},
-			0,
-			errors.New("m=2 cannot be larger than n=1"),
-		},
-		{
-			"1-1",
-			args{1, 1},
+			"1",
+			args{1},
 			1,
-			nil,
 		},
 		{
-			"3-3",
-			args{3, 3},
+			"2",
+			args{1},
+			2,
+		},
+		{
+			"3",
+			args{3},
 			6,
-			nil,
 		},
 		{
-			"4-4",
-			args{4, 4},
+			"4",
+			args{4},
 			24,
-			nil,
-		},
-		{
-			"3-2",
-			args{3, 2},
-			6,
-			nil,
-		},
-		{
-			"4-2",
-			args{4, 2},
-			12,
-			nil,
 		},
 	}
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
-			got, err := findPermutation(tc.args.n, tc.args.m)
-			if !reflect.DeepEqual(err, tc.wantErr) {
-				t.Errorf("findPermutation() = %v, want err %v", err, tc.wantErr)
-			}
+			got := findFacs(tc.args.n)
 			if got != tc.want {
-				t.Errorf("findPermutation() = %v, want %v", got, tc.want)
+				t.Errorf("findFacs() = %v, want %v", got, tc.want)
 			}
 		})
 	}
