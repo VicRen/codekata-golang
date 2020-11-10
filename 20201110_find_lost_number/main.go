@@ -24,8 +24,8 @@ func findLostNumber(nums []int) int {
 	for _, n := range nums {
 		sum += n
 	}
-	n := len(nums)
-	return n*(n+1)/2 - sum
+	l := len(nums)
+	return l*(l+1)/2 - sum
 }
 
 func findLostNumber2(nums []int) int {
