@@ -6,6 +6,7 @@ func main() {
 
 func sortFor(n int, src []int) []int {
 	var find []int
+	var left []int
 	for _, x := range src {
 		if x == n {
 			find = append(find, x)
