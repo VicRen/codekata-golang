@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	for i := 987654321; i > 1; i-- {
+	for i := 7654321; i > 1; i-- {
 		if !isPandigital(strconv.Itoa(i)) {
 			continue
 		}
