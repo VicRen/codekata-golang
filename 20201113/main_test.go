@@ -21,6 +21,11 @@ func Test_isCompliance(t *testing.T) {
 			args{[]int{4, 2, 1}},
 			false,
 		},
+		{
+			"example_3",
+			args{[]int{5, 1, 2, 3}},
+			true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

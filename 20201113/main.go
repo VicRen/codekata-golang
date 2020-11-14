@@ -6,6 +6,7 @@ func main() {
 	fmt.Println(isCompliance([]int{2, 3, 3, 2, 4}))
 	fmt.Println(isCompliance([]int{3, 3, 2, 4}))
 	fmt.Println(isCompliance([]int{4, 5, 1, 2}))
+	fmt.Println(isCompliance([]int{5, 1, 2, 3}))
 }
 
 func isCompliance(nums []int) bool {
