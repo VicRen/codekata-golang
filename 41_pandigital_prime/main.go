@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	for i := 7654321; i > 1; i-- {
+	for i := 7654321; i >= 2143; i -= 2 {
 		if !isPandigital(strconv.Itoa(i)) {
 			continue
 		}
@@ -24,7 +24,6 @@ func isPrime(n int) bool {
 		return false
 	}
 	res := n
-	//牛顿法求平方根
 	for res*res > n {
 		res = (res + n/res) / 2
 	}
