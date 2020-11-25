@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math"
 	"strings"
 )
 
@@ -40,7 +41,7 @@ func worthOf(word string) int {
 	sum := 0
 	for i := 0; i < len(word); i++ {
 		a := word[i : i+1][0]
-		w := uint8(a) - BASE
+		w := a - 'A' + 1
 		sum += int(w)
 	}
 	return sum
@@ -49,12 +50,8 @@ func worthOf(word string) int {
 func isTriangleNumber(n int) bool {
 	//tn = ½n(n+1)
 	x := 2 * n
-	res := x
-	//牛顿法求平方根
-	for res*res > x {
-		res = (res + x/res) / 2
-	}
-	for i := res; i > 0; i-- {
+	r := int(math.Sqrt(float64(x)))
+	for i := r; i > 0; i-- {
 		if i*(i+1) == x {
 			return true
 		}

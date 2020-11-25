@@ -86,6 +86,16 @@ func Test_isTriangleNumber(t *testing.T) {
 			args{29},
 			false,
 		},
+		{
+			"55",
+			args{55},
+			true,
+		},
+		{
+			"56",
+			args{56},
+			false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
