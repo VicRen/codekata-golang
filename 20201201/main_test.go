@@ -75,6 +75,11 @@ func Test_isAlmostEcho(t *testing.T) {
 			args{"abcbba"},
 			true,
 		},
+		{
+			"test6",
+			args{"abcdcbba"},
+			true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -10,7 +10,7 @@ func isEcho(s string) bool {
 	}
 	l := 0
 	r := len(s) - 1
-	for r >= l {
+	for r > l {
 		if s[l] != s[r] {
 			return false
 		}
@@ -26,9 +26,12 @@ func isAlmostEcho(s string) bool {
 	}
 	l := 0
 	r := len(s) - 1
-	for r >= l {
-		if s[l] != s[r] && !isEcho(removeIndex(l, s)) && !isEcho(removeIndex(r, s)) {
-			return false
+	for r > l {
+		if s[l] != s[r] {
+			if !isEcho(removeIndex(l, s)) && !isEcho(removeIndex(r, s)) {
+				return false
+			}
+			return true
 		}
 		l++
 		r--
