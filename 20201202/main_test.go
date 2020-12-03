@@ -36,11 +36,21 @@ func TestRomaToDigit(t *testing.T) {
 			args{"MCMXCIV"},
 			1994,
 		},
+		{
+			"test6",
+			args{"CMXCIX"},
+			999,
+		},
+		{
+			"test7",
+			args{"XLIX"},
+			49,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := RomaToDigit(tt.args.s); got != tt.want {
-				t.Errorf("RomaToDigit() = %v, want %v", got, tt.want)
+			if got := romaToDigit(tt.args.s); got != tt.want {
+				t.Errorf("romaToDigit() = %v, want %v", got, tt.want)
 			}
 		})
 	}

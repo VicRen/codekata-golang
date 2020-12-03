@@ -14,7 +14,7 @@ func main() {
 
 }
 
-func RomaToDigit(s string) int {
+func romaToDigit(s string) int {
 	l := len(s)
 	ret := 0
 	for i := 0; i < l; i++ {
