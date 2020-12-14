@@ -74,3 +74,13 @@ func (c card) suit() string {
 }
 
 type cards [5]card
+
+func (c cards) isSampleSuit() bool {
+	s := c[0].suit()
+	for _, card := range c {
+		if card.suit() != s {
+			return false
+		}
+	}
+	return true
+}
