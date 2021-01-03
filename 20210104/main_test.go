@@ -18,6 +18,34 @@ func Test_solution(t *testing.T) {
 			},
 			"abccbaabccba",
 		},
+		{
+			"test2",
+			args{
+				"rat",
+			},
+			"art",
+		},
+		{
+			"test3",
+			args{
+				"leetcode",
+			},
+			"cdelotee",
+		},
+		{
+			"test4",
+			args{
+				"ggggggg",
+			},
+			"ggggggg",
+		},
+		{
+			"test5",
+			args{
+				"spo",
+			},
+			"ops",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
