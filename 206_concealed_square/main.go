@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/big"
+	"time"
 )
 
 func main() {
@@ -11,18 +12,32 @@ func main() {
 }
 
 func solution() {
+	ts := time.Now()
 	n := math.Sqrt(19293949596979899)
 	t := math.Sqrt(10203040506070809)
 	for i := n; i >= t; i-- {
-		if i == 1389019170 {
-			fmt.Println(i)
-		}
 		x := (&big.Int{}).SetInt64(int64(i))
+		if !isEndsWith37(x.String()) {
+			continue
+		}
 		if isMatch(x.Mul(x, x)) {
 			fmt.Println(x)
 			fmt.Println("num is", int64(i)*10)
+			fmt.Println(time.Since(ts))
+			break
 		}
 	}
+}
+
+func isEndsWith37(s string) bool {
+	if len(s) == 0 {
+		return false
+	}
+	c := s[len(s)-1]
+	if c == '3' || c == '7' {
+		return true
+	}
+	return false
 }
 
 func isMatch(i *big.Int) bool {
