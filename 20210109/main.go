@@ -5,11 +5,15 @@ func main() {
 }
 
 func search(n int, nums []int) int {
-	l := len(nums)
-	c := l / 2
-	for {
-		if c == 0 {
-
+	low, high := 0, len(nums)-1
+	for low <= high {
+		mid := low + (high-low)/2
+		if nums[mid] == n {
+			return mid
+		} else if n < nums[mid] {
+			high = mid - 1
+		} else if n > nums[mid] {
+			low = mid + 1
 		}
 	}
 	return -1
