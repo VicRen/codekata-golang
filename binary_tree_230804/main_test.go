@@ -111,6 +111,31 @@ func postOrder2(n *node) {
 	}
 }
 
+func postOrder22(n *node) {
+	stack := NewStack()
+	p := n
+	var r *node = nil
+	for p != nil || !stack.IsEmpty() {
+		if p != nil {
+			stack.Push(p)
+			p = p.left
+		} else {
+			p = stack.Top().(*node)
+			if p.right != nil && p.right != r {
+				p = p.right
+				stack.Push(p)
+				p = p.left
+			} else {
+				x, _ := stack.Pop()
+				p = x.(*node)
+				visit(p)
+				r = p
+				p = nil
+			}
+		}
+	}
+}
+
 func visit(n *node) {
 	fmt.Printf("Visiting Node: %s\n", n.value)
 }
@@ -166,4 +191,9 @@ func TestPostOrder(t *testing.T) {
 func TestPostOrder2(t *testing.T) {
 	n := makeBinaryTree()
 	postOrder2(n)
+}
+
+func TestPostOrder22(t *testing.T) {
+	n := makeBinaryTree()
+	postOrder22(n)
 }

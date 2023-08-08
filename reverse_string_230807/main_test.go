@@ -11,6 +11,14 @@ func ReverseString(s string) string {
 	return string(tmp)
 }
 
+func ReverseString2(s string) string {
+	tmp := []rune(s)
+	for f, t := 0, len(tmp)-1; t > f; f, t = f+1, t-1 {
+		tmp[f], tmp[t] = tmp[t], tmp[f]
+	}
+	return string(tmp)
+}
+
 func TestReverseString(t *testing.T) {
 	tt := []struct {
 		name  string
@@ -25,6 +33,10 @@ func TestReverseString(t *testing.T) {
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
 			got := ReverseString(tc.input)
+			if got != tc.want {
+				t.Errorf("ReverseString(%s) = %s, want %s", tc.input, got, tc.want)
+			}
+			got = ReverseString2(tc.input)
 			if got != tc.want {
 				t.Errorf("ReverseString(%s) = %s, want %s", tc.input, got, tc.want)
 			}

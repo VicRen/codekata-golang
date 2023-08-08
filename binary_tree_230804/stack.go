@@ -5,8 +5,8 @@ import "errors"
 type Stack []interface {
 }
 
-func NewStack() Stack {
-	return Stack{}
+func NewStack() *Stack {
+	return &Stack{}
 }
 
 func (s Stack) IsEmpty() bool {
