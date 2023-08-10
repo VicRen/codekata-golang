@@ -5,12 +5,6 @@ import (
 	"testing"
 )
 
-type node struct {
-	left  *node
-	right *node
-	value string
-}
-
 func preOrder(n *node) {
 	if n == nil {
 		return
@@ -93,56 +87,63 @@ func postOrder2(n *node) {
 }
 
 func levelOrder(n *node) {
-	q := MakeQueue()
-	q.EnQueue(n)
-	for !q.IsEmpty() {
-		p := q.DeQueue().(*node)
+	queue := MakeQueue()
+	p := n
+	queue.EnQueue(p)
+	for !queue.IsEmpty() {
+		p = queue.DeQueue().(*node)
 		visit(p)
 		if p.left != nil {
-			q.EnQueue(p.left)
+			queue.EnQueue(p.left)
 		}
 		if p.right != nil {
-			q.EnQueue(p.right)
+			queue.EnQueue(p.right)
 		}
 	}
 }
 
 func TestPreOrder(t *testing.T) {
-	preOrder(makeBinary())
+	preOrder(makeBinaryTree())
 }
 
 func TestPreOrder2(t *testing.T) {
-	preOrder2(makeBinary())
+	preOrder2(makeBinaryTree())
 }
 
 func TestInOrder(t *testing.T) {
-	inOrder(makeBinary())
+	inOrder(makeBinaryTree())
 }
 
 func TestInOrder2(t *testing.T) {
-	inOrder2(makeBinary())
+	inOrder2(makeBinaryTree())
 }
 
 func TestPostOrder(t *testing.T) {
-	postOrder(makeBinary())
+	postOrder(makeBinaryTree())
 }
 
 func TestPostOrder2(t *testing.T) {
-	postOrder2(makeBinary())
+	postOrder2(makeBinaryTree())
 }
 
 func TestLevelOrder(t *testing.T) {
-	levelOrder(makeBinary())
+	levelOrder(makeBinaryTree())
+}
+
+type node struct {
+	left  *node
+	right *node
+	value string
 }
 
 func visit(n *node) {
 	if n == nil {
-		return
+		panic("invalid node")
 	}
-	fmt.Printf("visiting node %s\n", n.value)
+	fmt.Printf("Visiting node %s\n", n.value)
 }
 
-func makeBinary() *node {
+func makeBinaryTree() *node {
 	return &node{
 		left: &node{
 			left: &node{
